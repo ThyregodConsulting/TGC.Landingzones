@@ -106,6 +106,10 @@ module "claude_configuration" {
   for_each = github_repository.product_repository
   source   = "./modules/claude"
 
+  providers = {
+    github = github
+  }
+
   repository_name            = each.value.name
   github_app_private_key     = data.scaleway_secret_version.github_app_private_key.data
   github_app_installation_id = data.scaleway_secret_version.github_app_installation_id.data
