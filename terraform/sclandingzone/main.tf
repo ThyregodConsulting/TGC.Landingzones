@@ -107,7 +107,7 @@ module "claude_configuration" {
   source   = "./modules/claude"
 
   providers = {
-    integrations/github = github
+    integrations / github = github
   }
 
   repository_name            = each.value.name
