@@ -85,7 +85,7 @@ resource "github_repository" "product_repository" {
   allow_squash_merge     = true
   allow_rebase_merge     = true
   allow_merge_commit     = false
-  allow_forking          = true
+  allow_forking          = !each.value.PrivateRepository
   delete_branch_on_merge = true
   has_issues             = true
 
