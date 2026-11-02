@@ -89,6 +89,12 @@ resource "github_repository" "product_repository" {
   delete_branch_on_merge = true
   has_issues             = true
 
+  template {
+    owner                = "ThyregodConsulting"
+    repository           = "default_repository"
+    include_all_branches = false
+  }
+
   lifecycle {
     prevent_destroy = true
   }
