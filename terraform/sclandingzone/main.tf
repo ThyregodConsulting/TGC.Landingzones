@@ -113,7 +113,12 @@ module "claude_configuration" {
 }
 
 resource "github_repository_ruleset" "protect_main" {
-  for_each    = github_repository.product_repository
+  # Rulesets are only created for public repos
+  for_each = {
+    for key, repo in github_repository.product_repository : key => repo
+    if repo.visibility != "private"
+  }
+
   name        = "protect-main"
   repository  = each.value.name
   target      = "branch"
